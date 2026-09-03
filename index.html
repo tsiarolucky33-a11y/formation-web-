@@ -12,6 +12,7 @@
             --dark: #0f172a;
             --bg: #f1f5f9;
             --white: #ffffff;
+            --gray: #94a3b8;
         }
 
         * {
@@ -27,7 +28,6 @@
             line-height: 1.6;
         }
 
-        /* Hero Banner Section */
         header {
             background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             color: var(--white);
@@ -42,24 +42,15 @@
             font-size: 1.8rem;
             font-weight: 800;
             margin-bottom: 0.8rem;
-            letter-spacing: -0.5px;
         }
 
-        header p {
-            font-size: 1rem;
-            opacity: 0.9;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Container & Cards */
         .container {
             max-width: 650px;
             margin: -1.5rem auto 2rem;
             padding: 0 1rem;
         }
 
-        .card {
+        .card, .auth-container {
             background: var(--white);
             border-radius: 16px;
             padding: 1.5rem;
@@ -68,112 +59,224 @@
             border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
-        .card h2 {
+        .auth-tabs {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 0.8rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn.active {
             color: var(--primary);
-            font-size: 1.25rem;
+            border-bottom-color: var(--primary);
+        }
+
+        .form-group {
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            text-align: left;
         }
 
-        /* Lisitra amin'ny sary kely */
-        .feature-list {
-            list-style: none;
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
         }
 
-        .feature-list li {
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #f1f5f9;
-            display: flex;
-            align-items: center;
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
         }
 
-        .feature-list li:last-child {
-            border-bottom: none;
-        }
-
-        .feature-list li::before {
-            content: "✓";
-            color: var(--accent);
-            font-weight: bold;
-            margin-right: 0.8rem;
-            background: #dcfce7;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 0.8rem;
-        }
-
-        /* Call to Action & WhatsApp Bouton */
-        .cta-section {
-            text-align: center;
-            background: linear-gradient(to bottom, #ffffff, #f8fafc);
-        }
-
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background-color: var(--accent);
+        .btn-submit {
+            width: 100%;
+            background-color: var(--primary);
             color: var(--white);
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 12px;
+            padding: 0.85rem;
+            border: none;
+            border-radius: 8px;
             font-weight: 700;
             font-size: 1rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .auth-form { display: none; }
+        .auth-form.active { display: block; }
+
+        .user-logged-in {
+            display: none;
+            text-align: center;
+        }
+
+        .btn-logout {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
             margin-top: 1rem;
-            width: 100%;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-            transition: transform 0.2s;
-        }
-
-        .btn-whatsapp:active {
-            transform: scale(0.98);
-        }
-
-        /* Responsiveness */
-        @media (max-width: 480px) {
-            header h1 { font-size: 1.5rem; }
-            .card { padding: 1.2rem; }
         }
     </style>
+
+    <!-- SDK Firebase Modules -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword, 
+            onAuthStateChanged, 
+            signOut 
+        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // CONFIGURATION FIREBASE (Soloy ny anao avy ao amin'ny Console Firebase)
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_PROJECT_ID.appspot.com",
+            messagingSenderId: "YOUR_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Hijery raha efa connecté ilay olona
+        onAuthStateChanged(auth, (user) => {
+            const authBox = document.getElementById('auth-box');
+            const userBox = document.getElementById('user-box');
+            const userEmailDisplay = document.getElementById('user-email-display');
+
+            if (user) {
+                authBox.style.display = 'none';
+                userBox.style.display = 'block';
+                userEmailDisplay.innerText = user.email;
+            } else {
+                authBox.style.display = 'block';
+                userBox.style.display = 'none';
+            }
+        });
+
+        // S'inscrire
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            try {
+                await createUserWithEmailAndPassword(auth, email, password);
+                alert("Kaonty voatahiry soa aman-tsara!");
+            } catch (error) {
+                alert("Erreur: " + error.message);
+            }
+        });
+
+        // Se connecter
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                alert("Tafiditra soa aman-tsara!");
+            } catch (error) {
+                alert("Erreur: " + error.message);
+            }
+        });
+
+        // Déconnexion
+        window.logoutUser = function() {
+            signOut(auth);
+        }
+    </script>
 </head>
 <body>
 
     <header>
         <h1>Formation Creation Site Web</h1>
-        <p>Mianara mamorona site web matihanina amin'ny fomba tsotra, haingana ary azo ampiharina mivantana.</p>
+        <p>Mianara mamorona site web matihanina amin'ny fomba tsotra sy haingana.</p>
     </header>
 
     <div class="container">
-        <div class="card">
-            <h2>🚀 Momba ny Formation</h2>
-            <p>Ity fampiofanana ity dia atao manokana ho an'ireo te hampitombo fahaizana amin'ny famoronana tranonkala (HTML, CSS, ary Famoahana azy amin'ny Internet) na ho an'ny tenany na ho an'ny mpanjifa.</p>
+
+        <!-- Raha mbola tsy connecté -->
+        <div id="auth-box" class="auth-container">
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Se connecter</button>
+                <button class="tab-btn" onclick="switchTab('register')">S'inscrire</button>
+            </div>
+
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label>Adresse Email</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn-submit">Se connecter</button>
+            </form>
+
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label>Adresse Email</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Mot de passe</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <button type="submit" class="btn-submit" style="background-color: var(--accent);">Mifandray ary Hisoratra</button>
+            </form>
         </div>
 
-        <div class="card">
-            <h2>💡 Inona no Hianaranao?</h2>
-            <ul class="feature-list">
-                <li><strong>HTML5:</strong> Rafitra fototry ny pejy web</li>
-                <li><strong>CSS3:</strong> Design maoderina sy mety amin'ny Mobile</li>
-                <li><strong>GitHub Pages:</strong> Famoahana site maimaimpoana</li>
-                <li><strong>Pratique:</strong> Famoronana projet mivantana</li>
-            </ul>
+        <!-- Raha efa connecté -->
+        <div id="user-box" class="card user-logged-in">
+            <h2>Manao ahoana! 👋</h2>
+            <p>Tafiditra amin'ny kaonty: <strong id="user-email-display"></strong></p>
+            <p style="margin-top:0.5rem; color:var(--accent); font-weight:bold;">Tongasoa eto amin'ny sehatry ny Formation!</p>
+            <button onclick="logoutUser()" class="btn-logout">Se déconnecter</button>
         </div>
 
-        <div class="card cta-section">
-            <h2>📲 Te Hisoratra Anarana?</h2>
-            <p>Mifandraisa mivantana aminay amin'ny WhatsApp raha mila fanazavana fanampiny na hisoratra anarana.</p>
-            <a href="https://wa.me/261382550809?text=Salama,%20te-hisoratra%20anarana%20amin'ny%20formation%20site%20web%20aho" class="btn-whatsapp">
-                Mifandraisa amin'ny WhatsApp
-            </a>
-        </div>
     </div>
 
+    <script>
+        function switchTab(type) {
+            const loginForm = document.getElementById('login-form');
+            const registerForm = document.getElementById('register-form');
+            const tabs = document.querySelectorAll('.tab-btn');
+
+            if (type === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                tabs[0].classList.add('active');
+                tabs[1].classList.remove('active');
+            } else {
+                registerForm.classList.add('active');
+                loginForm.classList.remove('active');
+                tabs[1].classList.add('active');
+                tabs[0].classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>
