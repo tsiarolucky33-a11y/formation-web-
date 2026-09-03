@@ -6,45 +6,68 @@
   <title>Formation Pro & Services</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background-color: #0f172a; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; }
     
-    .card { background: #1e293b; padding: 25px; border-radius: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); width: 100%; max-width: 450px; border: 1px solid #334155; }
-    h2 { margin-bottom: 8px; color: #38bdf8; text-align: center; font-size: 22px; font-weight: 800; }
-    p.subtitle { text-align: center; color: #94a3b8; margin-bottom: 20px; font-size: 14px; }
+    /* BACKGROUND SOMBRE WITH RED ACCENT BORDER */
+    body { background-color: #0b0f19; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; }
     
-    /* PRICING TABLE */
-    .prices-box { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 12px; margin-bottom: 15px; }
-    .price-item { display: flex; justify-content: space-between; font-size: 14px; padding: 6px 0; border-bottom: 1px dashed #334155; }
-    .price-item:last-child { border-bottom: none; }
-    .price-name { color: #cbd5e1; font-weight: 600; }
-    .price-val { color: #38bdf8; font-weight: bold; }
+    .card { 
+      background: #111827; 
+      padding: 25px; 
+      border-radius: 16px; 
+      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15); 
+      width: 100%; 
+      max-width: 450px; 
+      border: 2px solid #ef4444; /* LOKO MENA */
+    }
 
-    /* MVOLA BOX WITH COPY */
-    .mvola-box { background: #064e3b; border: 1px solid #059669; padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
-    .mvola-title { font-size: 13px; color: #a7f3d0; margin-bottom: 4px; }
+    /* LOKO MENA SY MANGA AMIN'NY LOHATENY */
+    h2 { margin-bottom: 8px; color: #ef4444; text-align: center; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+    p.subtitle { text-align: center; color: #38bdf8; margin-bottom: 20px; font-size: 14px; font-weight: 600; } /* LOKO MANGA */
+    
+    /* SELECTION FORMATION */
+    .prices-box { background: #1e293b; border: 1px solid #3b82f6; border-radius: 10px; padding: 12px; margin-bottom: 15px; }
+    .price-option { display: flex; align-items: center; justify-content: space-between; padding: 8px; border-bottom: 1px dashed #334155; cursor: pointer; border-radius: 6px; }
+    .price-option:last-child { border-bottom: none; }
+    .price-option:hover { background: #0f172a; }
+    .price-option input { width: auto; margin-right: 10px; cursor: pointer; accent-color: #ef4444; }
+    .price-label { display: flex; justify-content: space-between; width: 100%; cursor: pointer; font-size: 14px; }
+    .price-name { color: #f8fafc; font-weight: 600; }
+    .price-val { color: #f97316; font-weight: bold; } /* LOKO ORANGE */
+
+    /* MVOLA BOX (LOKO MAITSO) */
+    .mvola-box { background: #022c22; border: 1.5px solid #10b981; padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
+    .mvola-title { font-size: 13px; color: #a7f3d0; margin-bottom: 4px; font-weight: bold; }
     .mvola-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 6px 0; }
-    .mvola-number { font-size: 20px; font-weight: bold; color: #34d399; letter-spacing: 1px; }
-    .btn-copy { background: #059669; color: white; border: none; padding: 4px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: bold; }
-    .btn-copy:active { background: #10b981; }
+    .mvola-number { font-size: 22px; font-weight: 900; color: #34d399; letter-spacing: 1px; }
+    
+    /* BOUTON COPIER (LOKO ORANGE) */
+    .btn-copy { background: #f97316; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+    .btn-copy:active { background: #ea580c; transform: scale(0.95); }
 
     /* FORM INPUTS */
     .input-group { margin-bottom: 12px; }
     label { display: block; margin-bottom: 5px; color: #cbd5e1; font-size: 13px; font-weight: 600; }
-    input { width: 100%; padding: 11px; background-color: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 14px; outline: none; }
-    input:focus { border-color: #38bdf8; }
+    input[type="email"], input[type="password"], input[type="text"] { width: 100%; padding: 11px; background-color: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 14px; outline: none; }
+    input:focus { border-color: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.3); }
     
-    /* BUTTONS */
-    .btn { width: 100%; padding: 13px; background-color: #0284c7; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-    .btn:hover { background-color: #0369a1; }
+    /* BOUTON MANGA */
+    .btn { width: 100%; padding: 13px; background-color: #2563eb; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+    .btn:hover { background-color: #1d4ed8; }
     
     .switch-btn { background: none; color: #38bdf8; font-size: 13px; text-decoration: underline; margin-top: 15px; border: none; width: 100%; cursor: pointer; }
     #message { margin-top: 12px; text-align: center; font-size: 13px; font-weight: bold; line-height: 1.4; }
 
     /* CONTACT / CONFIRMATION SECTION */
-    #contact-section { display: none; margin-top: 20px; border-top: 1px solid #334155; padding-top: 15px; }
+    #contact-section { display: none; margin-top: 20px; border-top: 1px dashed #334155; padding-top: 15px; }
     .contact-title { font-size: 14px; color: #cbd5e1; text-align: center; margin-bottom: 12px; font-weight: bold; }
-    .btn-whatsapp { display: block; width: 100%; padding: 12px; background-color: #25d366; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; margin-bottom: 10px; }
-    .btn-facebook { display: block; width: 100%; padding: 12px; background-color: #1877f2; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; }
+    
+    /* BOUTON WHATSAPP MAITSO */
+    .btn-whatsapp { display: block; width: 100%; padding: 12px; background-color: #16a34a; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; margin-bottom: 10px; transition: 0.2s; }
+    .btn-whatsapp:hover { background-color: #15803d; }
+    
+    /* BOUTON FACEBOOK MANGA */
+    .btn-facebook { display: block; width: 100%; padding: 12px; background-color: #1877f2; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.2s; }
+    .btn-facebook:hover { background-color: #0d65d9; }
   </style>
 </head>
 <body>
@@ -53,34 +76,47 @@
     <h2 id="form-title">Se connecter</h2>
     <p class="subtitle" id="form-subtitle">Ampidiro ny kaontinao hidirana</p>
     
-    <!-- TARIF FORMATION -->
-    <div class="prices-box" id="prices-container" style="display: none;">
-      <div class="price-item">
-        <span class="price-name">Formation Boost Facebook</span>
-        <span class="price-val">5 000 Ar</span>
-      </div>
-      <div class="price-item">
-        <span class="price-name">Formation Web Pro</span>
-        <span class="price-val">12 000 Ar</span>
-      </div>
-      <div class="price-item">
-        <span class="price-name">Formation BandLab</span>
-        <span class="price-val">4 000 Ar</span>
-      </div>
-    </div>
-
-    <!-- PAYMENT MVOLA -->
-    <div class="mvola-box" id="mvola-container" style="display: none;">
-      <div class="mvola-title">📲 Payment MVola:</div>
-      <div class="mvola-row">
-        <span class="mvola-number" id="mvola-num">0385538889</span>
-        <button type="button" class="btn-copy" onclick="copyMvola()">Copier</button>
-      </div>
-      <p style="font-size: 11px; color: #a7f3d0;">Kitiho ny Copier mba handefasana ny sarasara</p>
-    </div>
-
-    <!-- FORMULAIRE -->
     <form id="auth-form">
+      <!-- SAFIDY FORMATION -->
+      <div class="prices-box" id="prices-container" style="display: none;">
+        <p style="font-size: 12px; color: #38bdf8; margin-bottom: 8px; font-weight: bold;">Fidio ny formation tianao atao:</p>
+        
+        <label class="price-option">
+          <input type="radio" name="formation" value="Boost Facebook (5000 Ar)" checked>
+          <div class="price-label">
+            <span class="price-name">Formation Boost Facebook</span>
+            <span class="price-val">5 000 Ar</span>
+          </div>
+        </label>
+
+        <label class="price-option">
+          <input type="radio" name="formation" value="Web Pro (12000 Ar)">
+          <div class="price-label">
+            <span class="price-name">Formation Web Pro</span>
+            <span class="price-val">12 000 Ar</span>
+          </div>
+        </label>
+
+        <label class="price-option">
+          <input type="radio" name="formation" value="BandLab (4000 Ar)">
+          <div class="price-label">
+            <span class="price-name">Formation BandLab</span>
+            <span class="price-val">4 000 Ar</span>
+          </div>
+        </label>
+      </div>
+
+      <!-- PAYMENT MVOLA (MAITSO SY ORANGE) -->
+      <div class="mvola-box" id="mvola-container" style="display: none;">
+        <div class="mvola-title">📲 Payment MVola:</div>
+        <div class="mvola-row">
+          <span class="mvola-number" id="mvola-num">0385538889</span>
+          <button type="button" class="btn-copy" id="copy-btn" onclick="copyMvola()">Copier</button>
+        </div>
+        <p style="font-size: 11px; color: #a7f3d0;">Kitiho ny Copier mba hametrahana ny laharana ao amin'ny presse-papier</p>
+      </div>
+
+      <!-- INPUTS EMAIL & PASSWORD -->
       <div class="input-group">
         <label>Adresse Email</label>
         <input type="email" id="email" placeholder="Ohatra: mpianatra@gmail.com" required>
@@ -101,7 +137,7 @@
 
     <div id="message"></div>
 
-    <!-- CONTACT / WHATSAPP & FACEBOOK BUTTONS -->
+    <!-- CONTACT SECTION -->
     <div id="contact-section">
       <div class="contact-title">✅ Confirmé! Mifandraisa amin'ny Admin:</div>
       <a href="https://wa.me/261382550809" target="_blank" class="btn-whatsapp">
@@ -116,7 +152,7 @@
   </div>
 
   <script>
-    let isSignUp = false; // Mipoitra voalohany: Se connecter
+    let isSignUp = false;
 
     const formTitle = document.getElementById('form-title');
     const formSubtitle = document.getElementById('form-subtitle');
@@ -135,7 +171,6 @@
       contactSection.style.display = "none";
 
       if (isSignUp) {
-        // S'INSCRIRE MODE
         formTitle.innerText = "S'inscrire";
         formSubtitle.innerText = "Misoratra anarana ary fidio ny formation-nao";
         btnSubmit.innerText = "S'inscrire sy Confirmer";
@@ -146,7 +181,6 @@
         refContainer.style.display = "block";
         refInput.required = true;
       } else {
-        // SE CONNECTER MODE
         formTitle.innerText = "Se connecter";
         formSubtitle.innerText = "Ampidiro ny kaontinao hidirana";
         btnSubmit.innerText = "Se connecter";
@@ -159,10 +193,20 @@
       }
     }
 
+    // FONCTION COPIER DANS LE PRESSE-PAPIER
     function copyMvola() {
-      const num = document.getElementById('mvola-num').innerText;
-      navigator.clipboard.writeText(num);
-      alert("Voacopie ny laharana MVola: " + num);
+      const num = "0385538889";
+      navigator.clipboard.writeText(num).then(() => {
+        const copyBtn = document.getElementById('copy-btn');
+        copyBtn.innerText = "Voacopie! ✓";
+        copyBtn.style.background = "#10b981"; // LOKO MAITSO REHEFA VOASINDRY
+        setTimeout(() => {
+          copyBtn.innerText = "Copier";
+          copyBtn.style.background = "#f97316"; // MIVERINA LOKO ORANGE
+        }, 2000);
+      }).catch(err => {
+        alert("Laharana MVola: " + num);
+      });
     }
 
     document.getElementById('auth-form').addEventListener('submit', function(e) {
@@ -175,38 +219,37 @@
 
       if (isSignUp) {
         const refCode = refInput.value.trim();
+        const selectedFormation = document.querySelector('input[name="formation"]:checked').value;
         
         if (!refCode) {
-          messageDiv.style.color = "#f87171";
+          messageDiv.style.color = "#ef4444"; // MENA
           messageDiv.innerText = "Ampidiro ny Code Référence MVola!";
           return;
         }
 
         const existingUser = users.find(u => u.email === email);
         if (existingUser) {
-          messageDiv.style.color = "#f87171";
+          messageDiv.style.color = "#ef4444"; // MENA
           messageDiv.innerText = "Efa misy mampiasa io email io!";
           return;
         }
 
-        // Enregistrer l'utilisateur
-        users.push({ email: email, password: password, refCode: refCode });
+        users.push({ email: email, password: password, formation: selectedFormation, refCode: refCode });
         localStorage.setItem('registeredUsers', JSON.stringify(users));
 
-        messageDiv.style.color = "#34d399";
-        messageDiv.innerText = "🎉 Tafiditra soa aman-tsara ny fisoratana anarana!";
+        messageDiv.style.color = "#34d399"; // MAITSO
+        messageDiv.innerText = "🎉 Tafiditra soa aman-tsara! Formation voafidy: " + selectedFormation;
         contactSection.style.display = "block";
 
       } else {
-        // CONNEXION
         const validUser = users.find(u => u.email === email && u.password === password);
         
         if (validUser) {
-          messageDiv.style.color = "#34d399";
+          messageDiv.style.color = "#34d399"; // MAITSO
           messageDiv.innerText = "🎉 Tafiditra soa aman-tsara!";
           contactSection.style.display = "block";
         } else {
-          messageDiv.style.color = "#f87171";
+          messageDiv.style.color = "#ef4444"; // MENA
           messageDiv.innerText = "Diso ny email na mot de passe!";
           contactSection.style.display = "none";
         }
