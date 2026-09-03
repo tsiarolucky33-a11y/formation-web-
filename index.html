@@ -5,104 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formation Creation Site Web</title>
     <style>
-        /* CSS styling natambatra */
         :root {
             --primary: #2563eb;
-            --primary-hover: #1d4ed8;
+            --primary-dark: #1d4ed8;
+            --accent: #22c55e;
             --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #64748b;
+            --bg: #f1f5f9;
+            --white: #ffffff;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: var(--light);
+            background-color: var(--bg);
             color: var(--dark);
             line-height: 1.6;
         }
 
-        /* Header */
+        /* Hero Banner Section */
         header {
-            background-color: var(--primary);
-            color: white;
-            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: var(--white);
+            padding: 3.5rem 1.2rem 2.5rem;
             text-align: center;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
         }
 
         header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
-        /* Content Container */
+        /* Container & Cards */
         .container {
-            max-width: 800px;
-            margin: 2rem auto;
+            max-width: 650px;
+            margin: -1.5rem auto 2rem;
             padding: 0 1rem;
         }
 
-        /* Card design */
         .card {
-            background: white;
-            border-radius: 10px;
+            background: var(--white);
+            border-radius: 16px;
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         .card h2 {
             color: var(--primary);
+            font-size: 1.25rem;
             margin-bottom: 1rem;
-            font-size: 1.4rem;
-            border-bottom: 2px solid var(--light);
-            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* Lisitra */
-        ul {
-            padding-left: 1.2rem;
+        /* Lisitra amin'ny sary kely */
+        .feature-list {
+            list-style: none;
         }
 
-        li {
-            margin-bottom: 0.5rem;
+        .feature-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            align-items: center;
         }
 
-        /* Bouton */
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            text-decoration: none;
-            border-radius: 6px;
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li::before {
+            content: "✓";
+            color: var(--accent);
             font-weight: bold;
-            transition: background-color 0.2s ease;
-            margin-top: 0.5rem;
+            margin-right: 0.8rem;
+            background: #dcfce7;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
         }
 
-        .btn:hover {
-            background-color: var(--primary-hover);
+        /* Call to Action & WhatsApp Bouton */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
         }
 
-        /* Responsiveness amin'ny telefonina */
-        @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-            .card {
-                padding: 1rem;
-            }
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 1rem;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .btn-whatsapp:active {
+            transform: scale(0.98);
+        }
+
+        /* Responsiveness */
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            .card { padding: 1.2rem; }
         }
     </style>
 </head>
@@ -110,28 +147,31 @@
 
     <header>
         <h1>Formation Creation Site Web</h1>
-        <p>Mianara mamorona tranonkala matihanina amin'ny fomba tsotra sy haingana</p>
+        <p>Mianara mamorona site web matihanina amin'ny fomba tsotra, haingana ary azo ampiharina mivantana.</p>
     </header>
 
     <div class="container">
         <div class="card">
-            <h2>Momba ny Formation</h2>
-            <p>Ity fampiofanana ity dia natokana ho an'ireo te hianatra ny fototry ny famoronana site web amin'ny fampiasana HTML, CSS, ary ireo fitaovana maoderina.</p>
+            <h2>🚀 Momba ny Formation</h2>
+            <p>Ity fampiofanana ity dia atao manokana ho an'ireo te hampitombo fahaizana amin'ny famoronana tranonkala (HTML, CSS, ary Famoahana azy amin'ny Internet) na ho an'ny tenany na ho an'ny mpanjifa.</p>
         </div>
 
         <div class="card">
-            <h2>Inona no hianaranao?</h2>
-            <ul>
-                <li><strong>HTML5:</strong> Ny rafitra sy ny votoatin'ny pejy web</li>
-                <li><strong>CSS3:</strong> Ny endrika, loko, ary fanaovana azy hifanaraka amin'ny telefonina</li>
-                <li><strong>GitHub & Hosting:</strong> Ny fomba famoahana site mivantana amin'ny internet maimaimpoana</li>
+            <h2>💡 Inona no Hianaranao?</h2>
+            <ul class="feature-list">
+                <li><strong>HTML5:</strong> Rafitra fototry ny pejy web</li>
+                <li><strong>CSS3:</strong> Design maoderina sy mety amin'ny Mobile</li>
+                <li><strong>GitHub Pages:</strong> Famoahana site maimaimpoana</li>
+                <li><strong>Pratique:</strong> Famoronana projet mivantana</li>
             </ul>
         </div>
 
-        <div class="card" style="text-align: center;">
-            <h2>Mandrosoa Hisoratra Anarana</h2>
-            <p>Efa misokatra ny fisoratana anarana ho an'ny andiany vaovao.</p>
-            <a href="#" class="btn">Hisoratra Anarana</a>
+        <div class="card cta-section">
+            <h2>📲 Te Hisoratra Anarana?</h2>
+            <p>Mifandraisa mivantana aminay amin'ny WhatsApp raha mila fanazavana fanampiny na hisoratra anarana.</p>
+            <a href="https://wa.me/261382550809?text=Salama,%20te-hisoratra%20anarana%20amin'ny%20formation%20site%20web%20aho" class="btn-whatsapp">
+                Mifandraisa amin'ny WhatsApp
+            </a>
         </div>
     </div>
 
