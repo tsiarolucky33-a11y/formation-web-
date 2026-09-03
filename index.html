@@ -6,8 +6,6 @@
   <title>Formation Pro & Services</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    
-    /* BACKGROUND SOMBRE WITH RED ACCENT BORDER */
     body { background-color: #0b0f19; color: #f8fafc; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 15px; }
     
     .card { 
@@ -17,244 +15,274 @@
       box-shadow: 0 10px 30px rgba(239, 68, 68, 0.15); 
       width: 100%; 
       max-width: 450px; 
-      border: 2px solid #ef4444; /* LOKO MENA */
+      border: 2px solid #ef4444; /* MENA */
     }
 
-    /* LOKO MENA SY MANGA AMIN'NY LOHATENY */
-    h2 { margin-bottom: 8px; color: #ef4444; text-align: center; font-size: 24px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-    p.subtitle { text-align: center; color: #38bdf8; margin-bottom: 20px; font-size: 14px; font-weight: 600; } /* LOKO MANGA */
+    h2 { margin-bottom: 8px; color: #ef4444; text-align: center; font-size: 22px; font-weight: 800; text-transform: uppercase; }
+    p.subtitle { text-align: center; color: #38bdf8; margin-bottom: 20px; font-size: 13px; font-weight: 600; } /* MANGA */
     
-    /* SELECTION FORMATION */
-    .prices-box { background: #1e293b; border: 1px solid #3b82f6; border-radius: 10px; padding: 12px; margin-bottom: 15px; }
-    .price-option { display: flex; align-items: center; justify-content: space-between; padding: 8px; border-bottom: 1px dashed #334155; cursor: pointer; border-radius: 6px; }
-    .price-option:last-child { border-bottom: none; }
-    .price-option:hover { background: #0f172a; }
-    .price-option input { width: auto; margin-right: 10px; cursor: pointer; accent-color: #ef4444; }
-    .price-label { display: flex; justify-content: space-between; width: 100%; cursor: pointer; font-size: 14px; }
-    .price-name { color: #f8fafc; font-weight: 600; }
-    .price-val { color: #f97316; font-weight: bold; } /* LOKO ORANGE */
-
-    /* MVOLA BOX (LOKO MAITSO) */
-    .mvola-box { background: #022c22; border: 1.5px solid #10b981; padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
-    .mvola-title { font-size: 13px; color: #a7f3d0; margin-bottom: 4px; font-weight: bold; }
-    .mvola-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 6px 0; }
-    .mvola-number { font-size: 22px; font-weight: 900; color: #34d399; letter-spacing: 1px; }
-    
-    /* BOUTON COPIER (LOKO ORANGE) */
-    .btn-copy { background: #f97316; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-    .btn-copy:active { background: #ea580c; transform: scale(0.95); }
-
     /* FORM INPUTS */
     .input-group { margin-bottom: 12px; }
     label { display: block; margin-bottom: 5px; color: #cbd5e1; font-size: 13px; font-weight: 600; }
     input[type="email"], input[type="password"], input[type="text"] { width: 100%; padding: 11px; background-color: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #fff; font-size: 14px; outline: none; }
     input:focus { border-color: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.3); }
-    
-    /* BOUTON MANGA */
-    .btn { width: 100%; padding: 13px; background-color: #2563eb; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.2s; }
-    .btn:hover { background-color: #1d4ed8; }
-    
-    .switch-btn { background: none; color: #38bdf8; font-size: 13px; text-decoration: underline; margin-top: 15px; border: none; width: 100%; cursor: pointer; }
-    #message { margin-top: 12px; text-align: center; font-size: 13px; font-weight: bold; line-height: 1.4; }
 
-    /* CONTACT / CONFIRMATION SECTION */
-    #contact-section { display: none; margin-top: 20px; border-top: 1px dashed #334155; padding-top: 15px; }
-    .contact-title { font-size: 14px; color: #cbd5e1; text-align: center; margin-bottom: 12px; font-weight: bold; }
+    /* SELECTION FORMATION (PAGE 2) */
+    .prices-box { background: #1e293b; border: 1px solid #3b82f6; border-radius: 10px; padding: 12px; margin-bottom: 15px; }
+    .price-option { display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px dashed #334155; cursor: pointer; border-radius: 6px; }
+    .price-option:last-child { border-bottom: none; }
+    .price-option:hover { background: #0f172a; }
+    .price-option input { width: auto; margin-right: 10px; cursor: pointer; accent-color: #ef4444; }
+    .price-label { display: flex; justify-content: space-between; width: 100%; cursor: pointer; font-size: 14px; }
+    .price-name { color: #f8fafc; font-weight: 600; }
+    .price-val { color: #f97316; font-weight: bold; } /* ORANGE */
+
+    /* MVOLA BOX (PAGE 3) */
+    .mvola-box { background: #022c22; border: 1.5px solid #10b981; padding: 12px; border-radius: 10px; margin-bottom: 15px; text-align: center; }
+    .mvola-title { font-size: 13px; color: #a7f3d0; margin-bottom: 4px; font-weight: bold; }
+    .mvola-row { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 6px 0; }
+    .mvola-number { font-size: 22px; font-weight: 900; color: #34d399; letter-spacing: 1px; }
+    .price-selected-display { font-size: 16px; color: #f97316; font-weight: bold; margin-top: 5px; }
+
+    /* BOUTONS */
+    .btn-copy { background: #f97316; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: bold; }
+    .btn { width: 100%; padding: 13px; background-color: #2563eb; color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+    .btn:hover { background-color: #1d4ed8; }
+    .switch-btn { background: none; color: #38bdf8; font-size: 13px; text-decoration: underline; margin-top: 15px; border: none; width: 100%; cursor: pointer; }
     
-    /* BOUTON WHATSAPP MAITSO */
-    .btn-whatsapp { display: block; width: 100%; padding: 12px; background-color: #16a34a; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; margin-bottom: 10px; transition: 0.2s; }
-    .btn-whatsapp:hover { background-color: #15803d; }
-    
-    /* BOUTON FACEBOOK MANGA */
-    .btn-facebook { display: block; width: 100%; padding: 12px; background-color: #1877f2; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.2s; }
-    .btn-facebook:hover { background-color: #0d65d9; }
+    .error-msg { color: #ef4444; font-size: 13px; font-weight: bold; text-align: center; margin-top: 10px; }
+
+    /* CONTACT / WHATSAPP PAGE (PAGE 4) */
+    #page-4 { text-align: center; }
+    .btn-whatsapp { display: block; width: 100%; padding: 13px; background-color: #16a34a; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; margin-bottom: 12px; font-size: 15px; }
+    .btn-facebook { display: block; width: 100%; padding: 13px; background-color: #1877f2; color: white; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 15px; }
+    .btn-logout { background: none; color: #ef4444; border: 1px solid #ef4444; padding: 8px 15px; border-radius: 6px; font-size: 12px; margin-top: 20px; cursor: pointer; font-weight: bold; }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <h2 id="form-title">Se connecter</h2>
-    <p class="subtitle" id="form-subtitle">Ampidiro ny kaontinao hidirana</p>
     
-    <form id="auth-form">
-      <!-- SAFIDY FORMATION -->
-      <div class="prices-box" id="prices-container" style="display: none;">
-        <p style="font-size: 12px; color: #38bdf8; margin-bottom: 8px; font-weight: bold;">Fidio ny formation tianao atao:</p>
+    <!-- ================= PAGE 1: AUTHENTIFICATION ================= -->
+    <div id="page-1">
+      <h2 id="p1-title">Se connecter</h2>
+      <p class="subtitle" id="p1-subtitle">Ampidiro ny kaontinao hidirana</p>
+      
+      <form id="form-page-1">
+        <div class="input-group">
+          <label>Adresse Email</label>
+          <input type="email" id="email" placeholder="Ohatra: mpianatra@gmail.com" required>
+        </div>
         
-        <label class="price-option">
-          <input type="radio" name="formation" value="Boost Facebook (5000 Ar)" checked>
-          <div class="price-label">
-            <span class="price-name">Formation Boost Facebook</span>
-            <span class="price-val">5 000 Ar</span>
-          </div>
-        </label>
+        <div class="input-group">
+          <label>Mot de Passe</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+        
+        <button type="submit" class="btn" id="p1-btn">Se connecter</button>
+      </form>
 
-        <label class="price-option">
-          <input type="radio" name="formation" value="Web Pro (12000 Ar)">
-          <div class="price-label">
-            <span class="price-name">Formation Web Pro</span>
-            <span class="price-val">12 000 Ar</span>
-          </div>
-        </label>
+      <div id="p1-msg" class="error-msg"></div>
+      <button class="switch-btn" onclick="toggleAuthMode()" id="p1-toggle">Mbola tsy manana kaonty? S'inscrire</button>
+    </div>
 
-        <label class="price-option">
-          <input type="radio" name="formation" value="BandLab (4000 Ar)">
-          <div class="price-label">
-            <span class="price-name">Formation BandLab</span>
-            <span class="price-val">4 000 Ar</span>
-          </div>
-        </label>
-      </div>
+    <!-- ================= PAGE 2: MISAFIDY FORMATION ================= -->
+    <div id="page-2" style="display: none;">
+      <h2>Misafidy Formation</h2>
+      <p class="subtitle">Fidio ny formation tianao atao dia kitiho ny Confirmer</p>
+      
+      <form id="form-page-2">
+        <div class="prices-box">
+          <label class="price-option">
+            <input type="radio" name="formation" value="Boost Facebook" data-price="5 000 Ar" checked>
+            <div class="price-label">
+              <span class="price-name">Formation Boost Facebook</span>
+              <span class="price-val">5 000 Ar</span>
+            </div>
+          </label>
 
-      <!-- PAYMENT MVOLA (MAITSO SY ORANGE) -->
-      <div class="mvola-box" id="mvola-container" style="display: none;">
+          <label class="price-option">
+            <input type="radio" name="formation" value="Web Pro" data-price="12 000 Ar">
+            <div class="price-label">
+              <span class="price-name">Formation Web Pro</span>
+              <span class="price-val">12 000 Ar</span>
+            </div>
+          </label>
+
+          <label class="price-option">
+            <input type="radio" name="formation" value="BandLab" data-price="4 000 Ar">
+            <div class="price-label">
+              <span class="price-name">Formation BandLab</span>
+              <span class="price-val">4 000 Ar</span>
+            </div>
+          </label>
+        </div>
+
+        <button type="submit" class="btn">Confirmer ny safidy</button>
+      </form>
+    </div>
+
+    <!-- ================= PAGE 3: PAYMENT MVOLA & CODE REF ================= -->
+    <div id="page-3" style="display: none;">
+      <h2>Fandoavam-bola MVola</h2>
+      <p class="subtitle">Alefaso ny sarany dia ampidiro ny Code Référence</p>
+      
+      <div class="mvola-box">
         <div class="mvola-title">📲 Payment MVola:</div>
         <div class="mvola-row">
           <span class="mvola-number" id="mvola-num">0385538889</span>
           <button type="button" class="btn-copy" id="copy-btn" onclick="copyMvola()">Copier</button>
         </div>
-        <p style="font-size: 11px; color: #a7f3d0;">Kitiho ny Copier mba hametrahana ny laharana ao amin'ny presse-papier</p>
+        <div class="price-selected-display" id="display-price">Sarany: 5 000 Ar</div>
       </div>
 
-      <!-- INPUTS EMAIL & PASSWORD -->
-      <div class="input-group">
-        <label>Adresse Email</label>
-        <input type="email" id="email" placeholder="Ohatra: mpianatra@gmail.com" required>
-      </div>
+      <form id="form-page-3">
+        <div class="input-group">
+          <label>Référence / Code MVola</label>
+          <input type="text" id="ref_code" placeholder="Ohatra: 123456789" required>
+        </div>
+
+        <button type="submit" class="btn">Confirmer ny fandoavam-bola</button>
+      </form>
+
+      <div id="p3-msg" class="error-msg"></div>
+    </div>
+
+    <!-- ================= PAGE 4: WHATSAPP & FACEBOOK ================= -->
+    <div id="page-4" style="display: none;">
+      <div style="font-size: 45px; margin-bottom: 10px;">🎉</div>
+      <h2 style="color: #34d399; margin-bottom: 8px;">Tafiditra soa aman-tsara!</h2>
+      <p class="subtitle" style="color: #cbd5e1;">Mifandraisa amin'ny Admin amin'ny WhatsApp na Facebook izao:</p>
       
-      <div class="input-group">
-        <label>Mot de Passe</label>
-        <input type="password" id="password" placeholder="••••••••" required>
-      </div>
-
-      <div class="input-group" id="ref-container" style="display: none;">
-        <label>Référence / Code MVola</label>
-        <input type="text" id="ref_code" placeholder="Ohatra: 123456789">
-      </div>
-      
-      <button type="submit" class="btn" id="btn-submit">Se connecter</button>
-    </form>
-
-    <div id="message"></div>
-
-    <!-- CONTACT SECTION -->
-    <div id="contact-section">
-      <div class="contact-title">✅ Confirmé! Mifandraisa amin'ny Admin:</div>
       <a href="https://wa.me/261382550809" target="_blank" class="btn-whatsapp">
         💬 WhatsApp: 038 25 508 09
       </a>
+
       <a href="https://www.facebook.com/profile.php?id=61579196451031" target="_blank" class="btn-facebook">
         🌐 Pejy Facebook
       </a>
+
+      <button class="btn-logout" onclick="logout()">Se déconnecter</button>
     </div>
 
-    <button class="switch-btn" onclick="toggleMode()" id="btn-toggle">Mbola tsy manana kaonty? S'inscrire</button>
   </div>
 
   <script>
     let isSignUp = false;
+    let selectedFormationData = { name: "", price: "" };
+    let currentUserData = { email: "", password: "" };
 
-    const formTitle = document.getElementById('form-title');
-    const formSubtitle = document.getElementById('form-subtitle');
-    const btnSubmit = document.getElementById('btn-submit');
-    const btnToggle = document.getElementById('btn-toggle');
-    const pricesContainer = document.getElementById('prices-container');
-    const mvolaContainer = document.getElementById('mvola-container');
-    const refContainer = document.getElementById('ref-container');
-    const refInput = document.getElementById('ref_code');
-    const messageDiv = document.getElementById('message');
-    const contactSection = document.getElementById('contact-section');
-
-    function toggleMode() {
+    function toggleAuthMode() {
       isSignUp = !isSignUp;
-      messageDiv.innerText = "";
-      contactSection.style.display = "none";
-
+      document.getElementById('p1-msg').innerText = "";
+      
       if (isSignUp) {
-        formTitle.innerText = "S'inscrire";
-        formSubtitle.innerText = "Misoratra anarana ary fidio ny formation-nao";
-        btnSubmit.innerText = "S'inscrire sy Confirmer";
-        btnToggle.innerText = "Efa manana kaonty? Se connecter";
-        
-        pricesContainer.style.display = "block";
-        mvolaContainer.style.display = "block";
-        refContainer.style.display = "block";
-        refInput.required = true;
+        document.getElementById('p1-title').innerText = "S'inscrire";
+        document.getElementById('p1-subtitle').innerText = "Mamorona kaonty vaovao";
+        document.getElementById('p1-btn').innerText = "S'inscrire";
+        document.getElementById('p1-toggle').innerText = "Efa manana kaonty? Se connecter";
       } else {
-        formTitle.innerText = "Se connecter";
-        formSubtitle.innerText = "Ampidiro ny kaontinao hidirana";
-        btnSubmit.innerText = "Se connecter";
-        btnToggle.innerText = "Mbola tsy manana kaonty? S'inscrire";
-        
-        pricesContainer.style.display = "none";
-        mvolaContainer.style.display = "none";
-        refContainer.style.display = "none";
-        refInput.required = false;
+        document.getElementById('p1-title').innerText = "Se connecter";
+        document.getElementById('p1-subtitle').innerText = "Ampidiro ny kaontinao hidirana";
+        document.getElementById('p1-btn').innerText = "Se connecter";
+        document.getElementById('p1-toggle').innerText = "Mbola tsy manana kaonty? S'inscrire";
       }
     }
 
-    // FONCTION COPIER DANS LE PRESSE-PAPIER
+    document.getElementById('form-page-1').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const msgDiv = document.getElementById('p1-msg');
+
+      let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+      if (isSignUp) {
+        const existingUser = users.find(u => u.email === email);
+        if (existingUser) {
+          msgDiv.innerText = "Efa misy mampiasa io email io!";
+          return;
+        }
+        currentUserData = { email: email, password: password };
+        showPage(2);
+
+      } else {
+        const validUser = users.find(u => u.email === email && u.password === password);
+        if (validUser) {
+          showPage(4);
+        } else {
+          msgDiv.innerText = "Diso ny email na mot de passe!";
+        }
+      }
+    });
+
+    document.getElementById('form-page-2').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const selectedRadio = document.querySelector('input[name="formation"]:checked');
+      
+      selectedFormationData.name = selectedRadio.value;
+      selectedFormationData.price = selectedRadio.getAttribute('data-price');
+
+      document.getElementById('display-price').innerText = "Sarany: " + selectedFormationData.price;
+      
+      showPage(3);
+    });
+
+    document.getElementById('form-page-3').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const refCode = document.getElementById('ref_code').value.trim();
+      
+      if (!refCode) {
+        document.getElementById('p3-msg').innerText = "Ampidiro ny Code Référence MVola!";
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+      users.push({
+        email: currentUserData.email,
+        password: currentUserData.password,
+        formation: selectedFormationData.name,
+        price: selectedFormationData.price,
+        refCode: refCode
+      });
+      localStorage.setItem('registeredUsers', JSON.stringify(users));
+
+      showPage(4);
+    });
+
     function copyMvola() {
       const num = "0385538889";
       navigator.clipboard.writeText(num).then(() => {
         const copyBtn = document.getElementById('copy-btn');
         copyBtn.innerText = "Voacopie! ✓";
-        copyBtn.style.background = "#10b981"; // LOKO MAITSO REHEFA VOASINDRY
+        copyBtn.style.background = "#10b981";
         setTimeout(() => {
           copyBtn.innerText = "Copier";
-          copyBtn.style.background = "#f97316"; // MIVERINA LOKO ORANGE
+          copyBtn.style.background = "#f97316";
         }, 2000);
       }).catch(err => {
         alert("Laharana MVola: " + num);
       });
     }
 
-    document.getElementById('auth-form').addEventListener('submit', function(e) {
-      e.preventDefault();
+    function showPage(pageNumber) {
+      document.getElementById('page-1').style.display = "none";
+      document.getElementById('page-2').style.display = "none";
+      document.getElementById('page-3').style.display = "none";
+      document.getElementById('page-4').style.display = "none";
+
+      document.getElementById('page-' + pageNumber).style.display = "block";
+    }
+
+    function logout() {
+      document.getElementById('email').value = "";
+      document.getElementById('password').value = "";
+      document.getElementById('ref_code').value = "";
+      document.getElementById('p1-msg').innerText = "";
+      document.getElementById('p3-msg').innerText = "";
       
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      let users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
-
-      if (isSignUp) {
-        const refCode = refInput.value.trim();
-        const selectedFormation = document.querySelector('input[name="formation"]:checked').value;
-        
-        if (!refCode) {
-          messageDiv.style.color = "#ef4444"; // MENA
-          messageDiv.innerText = "Ampidiro ny Code Référence MVola!";
-          return;
-        }
-
-        const existingUser = users.find(u => u.email === email);
-        if (existingUser) {
-          messageDiv.style.color = "#ef4444"; // MENA
-          messageDiv.innerText = "Efa misy mampiasa io email io!";
-          return;
-        }
-
-        users.push({ email: email, password: password, formation: selectedFormation, refCode: refCode });
-        localStorage.setItem('registeredUsers', JSON.stringify(users));
-
-        messageDiv.style.color = "#34d399"; // MAITSO
-        messageDiv.innerText = "🎉 Tafiditra soa aman-tsara! Formation voafidy: " + selectedFormation;
-        contactSection.style.display = "block";
-
-      } else {
-        const validUser = users.find(u => u.email === email && u.password === password);
-        
-        if (validUser) {
-          messageDiv.style.color = "#34d399"; // MAITSO
-          messageDiv.innerText = "🎉 Tafiditra soa aman-tsara!";
-          contactSection.style.display = "block";
-        } else {
-          messageDiv.style.color = "#ef4444"; // MENA
-          messageDiv.innerText = "Diso ny email na mot de passe!";
-          contactSection.style.display = "none";
-        }
-      }
-    });
+      showPage(1);
+    }
   </script>
 
 </body>
