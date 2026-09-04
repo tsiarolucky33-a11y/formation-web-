@@ -365,7 +365,7 @@
       <button class="switch-btn" onclick="toggleAuthMode()" id="p1-toggle">Mbola tsy manana kaonty? S'inscrire</button>
     </div>
 
-    <!-- ================= PAGE FOLLOW (NEW): SUIVRE PAGE FACEBOOK ================= -->
+    <!-- ================= PAGE FOLLOW: SUIVRE PAGE FACEBOOK ================= -->
     <div id="page-follow" class="page" style="display: none; text-align: center;">
       <div style="font-size: 40px; margin-bottom: 10px;">👍</div>
       <h2>Araho ny Pejy</h2>
@@ -384,7 +384,15 @@
       <form id="form-page-2">
         <div class="prices-box">
           <label class="price-option">
-            <input type="radio" name="formation" value="Boost Facebook" data-price="5 000 Ar" checked>
+            <input type="radio" name="formation" value="Asa en ligne" data-price="2 000 Ar" checked>
+            <div class="price-label">
+              <span class="price-name">Formation Asa en ligne</span>
+              <span class="price-val">2 000 Ar</span>
+            </div>
+          </label>
+
+          <label class="price-option">
+            <input type="radio" name="formation" value="Boost Facebook" data-price="5 000 Ar">
             <div class="price-label">
               <span class="price-name">Formation Boost Facebook</span>
               <span class="price-val">5 000 Ar</span>
@@ -423,7 +431,7 @@
           <span class="mvola-number" id="mvola-num">0385538889</span>
           <button type="button" class="btn-copy" id="copy-btn" onclick="copyMvola()">Copier</button>
         </div>
-        <div class="price-selected-display" id="display-price">Sarany: 5 000 Ar</div>
+        <div class="price-selected-display" id="display-price">Sarany: 2 000 Ar</div>
       </div>
 
       <form id="form-page-3">
@@ -495,7 +503,6 @@
         }
         currentUserData = { email: email, password: password };
         
-        // Rehefa Inscription dia mandeha any amin'ny Page Suivre aloha
         showPage('follow');
 
       } else {
@@ -508,7 +515,6 @@
       }
     });
 
-    // Mampisokatra ny Facebook amin'ny Onglet vaovao sy mifindra amin'ny Page 2 (Selection Formation)
     function handleFollowFacebook() {
       window.open("https://www.facebook.com/tsiaropage", "_blank");
       showPage('2');
