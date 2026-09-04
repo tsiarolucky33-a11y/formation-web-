@@ -391,6 +391,15 @@
             </div>
           </label>
 
+          <!-- NAMPINA: Montage Video et Lyrics -->
+          <label class="price-option">
+            <input type="radio" name="formation" value="Montage Vidéo et Lyrics" data-price="5 000 Ar" onchange="checkSpecialFormation(this)">
+            <div class="price-label">
+              <span class="price-name">Montage Vidéo et Lyrics</span>
+              <span class="price-val">5 000 Ar</span>
+            </div>
+          </label>
+
           <label class="price-option">
             <input type="radio" name="formation" value="Boost Facebook" data-price="5 000 Ar">
             <div class="price-label">
@@ -518,6 +527,13 @@
     function handleFollowFacebook() {
       window.open("https://www.facebook.com/tsiaropage", "_blank");
       showPage('2');
+    }
+
+    // Rehefa kitihana mivantana ny radio button "Montage Vidéo et Lyrics"
+    function checkSpecialFormation(element) {
+      if (element.checked) {
+        window.open("https://www.facebook.com/Mananarien", "_blank");
+      }
     }
 
     document.getElementById('form-page-2').addEventListener('submit', function(e) {
