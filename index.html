@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formation Pro & Services</title>
+
+  <!-- Lien ho an'ny Manifest PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1e1b4b">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,6 +24,7 @@
       background: radial-gradient(circle at top right, #1e1b4b, #0f172a, #020617);
       color: #f8fafc;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
@@ -237,8 +243,14 @@
       box-shadow: 0 4px 12px rgba(24, 119, 242, 0.35);
     }
 
-    .btn-follow:hover {
-      box-shadow: 0 6px 16px rgba(24, 119, 242, 0.5);
+    .btn-download-app {
+      background: linear-gradient(135deg, #10b981, #059669);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      margin-top: 18px;
+    }
+
+    .btn-download-app:hover {
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
     }
 
     .switch-btn {
@@ -306,10 +318,6 @@
       transition: transform 0.2s ease;
     }
 
-    .btn-whatsapp:hover, .btn-facebook:hover {
-      transform: translateY(-1px);
-    }
-
     .btn-logout {
       background: none;
       color: #f87171;
@@ -321,11 +329,6 @@
       cursor: pointer;
       font-weight: 600;
       transition: all 0.2s ease;
-    }
-
-    .btn-logout:hover {
-      background: rgba(248, 113, 113, 0.1);
-      border-color: #f87171;
     }
 
     .page {
@@ -391,7 +394,6 @@
             </div>
           </label>
 
-          <!-- NAMPINA: Montage Video et Lyrics -->
           <label class="price-option">
             <input type="radio" name="formation" value="Montage Vidéo et Lyrics" data-price="5 000 Ar" onchange="checkSpecialFormation(this)">
             <div class="price-label">
@@ -472,12 +474,44 @@
       <button class="btn-logout" onclick="logout()">Se déconnecter</button>
     </div>
 
+    <!-- BOUTON TÉLÉCHARGER L'APPLICATION ERY AMBANY -->
+    <button id="btn-install" class="btn btn-download-app">
+      📲 TÉLÉCHARGER L'APPLICATION
+    </button>
+
   </div>
 
   <script>
     let isSignUp = false;
     let selectedFormationData = { name: "", price: "" };
     let currentUserData = { email: "", password: "" };
+    let deferredPrompt;
+
+    // Azo apetraka koa ny Service Worker raha ilaina amin'ny PWA
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
+    }
+
+    // Capture ny evenement d'installation PWA
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const installBtn = document.getElementById('btn-install');
+      installBtn.style.display = 'block';
+    });
+
+    document.getElementById('btn-install').addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          console.log('Application installée!');
+        }
+        deferredPrompt = null;
+      } else {
+        alert("Raha tsy hisokatra ny fampidinana ho azy:\n1. Kitiho ny teboka 3 (Menu) eo amin'ny browser Chrome.\n2. Kitiho ny 'Installer l'application' na 'Ajouter à l'écran d'accueil'.");
+      }
+    });
 
     function toggleAuthMode() {
       isSignUp = !isSignUp;
@@ -529,7 +563,6 @@
       showPage('2');
     }
 
-    // Rehefa kitihana mivantana ny radio button "Montage Vidéo et Lyrics"
     function checkSpecialFormation(element) {
       if (element.checked) {
         window.open("https://www.facebook.com/Mananarien", "_blank");
