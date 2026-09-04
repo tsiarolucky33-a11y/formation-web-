@@ -99,7 +99,7 @@
       background-color: rgba(15, 23, 42, 0.9);
     }
 
-    /* SELECTION FORMATION (PAGE 2) */
+    /* SELECTION FORMATION */
     .prices-box {
       display: flex;
       flex-direction: column;
@@ -153,7 +153,7 @@
       border: 1px solid rgba(249, 115, 22, 0.2);
     }
 
-    /* MVOLA BOX (PAGE 3) */
+    /* MVOLA BOX */
     .mvola-box {
       background: linear-gradient(135deg, rgba(6, 78, 59, 0.6), rgba(2, 44, 34, 0.8));
       border: 1.5px solid #10b981;
@@ -232,6 +232,15 @@
       box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
     }
 
+    .btn-follow {
+      background: linear-gradient(135deg, #1877f2, #0052cc);
+      box-shadow: 0 4px 12px rgba(24, 119, 242, 0.35);
+    }
+
+    .btn-follow:hover {
+      box-shadow: 0 6px 16px rgba(24, 119, 242, 0.5);
+    }
+
     .switch-btn {
       background: none;
       color: #38bdf8;
@@ -257,7 +266,7 @@
       margin-top: 12px;
     }
 
-    /* CONTACT / WHATSAPP PAGE (PAGE 4) */
+    /* CONTACT / WHATSAPP PAGE */
     #page-4 {
       text-align: center;
     }
@@ -319,7 +328,6 @@
       border-color: #f87171;
     }
 
-    /* Page Fade Animation */
     .page {
       animation: fadeIn 0.3s ease-in-out;
     }
@@ -355,6 +363,17 @@
 
       <div id="p1-msg" class="error-msg"></div>
       <button class="switch-btn" onclick="toggleAuthMode()" id="p1-toggle">Mbola tsy manana kaonty? S'inscrire</button>
+    </div>
+
+    <!-- ================= PAGE FOLLOW (NEW): SUIVRE PAGE FACEBOOK ================= -->
+    <div id="page-follow" class="page" style="display: none; text-align: center;">
+      <div style="font-size: 40px; margin-bottom: 10px;">👍</div>
+      <h2>Araho ny Pejy</h2>
+      <p class="subtitle" style="margin-bottom: 20px;">Kitiho ny bouton SUIVRE etsy ambany mba hanarahana ny pejy Facebook-tsika alohan'ny hanohizana.</p>
+      
+      <button class="btn btn-follow" onclick="handleFollowFacebook()">
+        🌐 SUIVRE
+      </button>
     </div>
 
     <!-- ================= PAGE 2: MISAFIDY FORMATION ================= -->
@@ -475,17 +494,25 @@
           return;
         }
         currentUserData = { email: email, password: password };
-        showPage(2);
+        
+        // Rehefa Inscription dia mandeha any amin'ny Page Suivre aloha
+        showPage('follow');
 
       } else {
         const validUser = users.find(u => u.email === email && u.password === password);
         if (validUser) {
-          showPage(4);
+          showPage('4');
         } else {
           msgDiv.innerText = "Diso ny email na mot de passe!";
         }
       }
     });
+
+    // Mampisokatra ny Facebook amin'ny Onglet vaovao sy mifindra amin'ny Page 2 (Selection Formation)
+    function handleFollowFacebook() {
+      window.open("https://www.facebook.com/tsiaropage", "_blank");
+      showPage('2');
+    }
 
     document.getElementById('form-page-2').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -496,7 +523,7 @@
 
       document.getElementById('display-price').innerText = "Sarany: " + selectedFormationData.price;
       
-      showPage(3);
+      showPage('3');
     });
 
     document.getElementById('form-page-3').addEventListener('submit', function(e) {
@@ -518,7 +545,7 @@
       });
       localStorage.setItem('registeredUsers', JSON.stringify(users));
 
-      showPage(4);
+      showPage('4');
     });
 
     function copyMvola() {
@@ -536,13 +563,14 @@
       });
     }
 
-    function showPage(pageNumber) {
+    function showPage(pageId) {
       document.getElementById('page-1').style.display = "none";
+      document.getElementById('page-follow').style.display = "none";
       document.getElementById('page-2').style.display = "none";
       document.getElementById('page-3').style.display = "none";
       document.getElementById('page-4').style.display = "none";
 
-      document.getElementById('page-' + pageNumber).style.display = "block";
+      document.getElementById('page-' + pageId).style.display = "block";
     }
 
     function logout() {
@@ -552,7 +580,7 @@
       document.getElementById('p1-msg').innerText = "";
       document.getElementById('p3-msg').innerText = "";
       
-      showPage(1);
+      showPage('1');
     }
   </script>
 
