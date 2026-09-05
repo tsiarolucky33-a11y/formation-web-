@@ -112,11 +112,11 @@
       background: rgba(30, 41, 59, 0.7);
       border: 1.5px solid #3b82f6;
       color: #f8fafc;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       border-radius: 12px;
       cursor: pointer;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -126,6 +126,30 @@
     .btn-cat:hover {
       background: rgba(59, 130, 246, 0.2);
       border-color: #60a5fa;
+      transform: translateY(-2px);
+    }
+
+    .btn-artist {
+      width: 100%;
+      padding: 14px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1.5px solid #a855f7;
+      color: #f8fafc;
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-artist:hover {
+      background: rgba(168, 85, 247, 0.2);
+      border-color: #c084fc;
       transform: translateY(-2px);
     }
 
@@ -441,6 +465,11 @@
         <span>🎨 DESSIN PRO ET GRAPHIC</span>
         <span>➔</span>
       </button>
+
+      <button class="btn-cat" style="border-color: #a855f7;" onclick="openCategory('artists')">
+        <span>🎤 LES NOUVEAUX ARTISTS</span>
+        <span>➔</span>
+      </button>
     </div>
 
     <!-- ================= PAGE 2A: FORMATIONS ================= -->
@@ -515,6 +544,33 @@
 
         <button type="submit" class="btn">Confirmer ny safidy</button>
       </form>
+    </div>
+
+    <!-- ================= PAGE 2C: LES NOUVEAUX ARTISTS ================= -->
+    <div id="page-2c" class="page" style="display: none;">
+      <button class="btn-back" onclick="showPage('categories')">← Hiverina amin'ny Sokajy</button>
+      <h2>Les Nouveaux Artists</h2>
+      <p class="subtitle">Kitiho ny anaran'ny artist mba hitsidihana ny pejiny</p>
+
+      <a href="https://www.facebook.com/profile.php?id=61577106964324" target="_blank" class="btn-artist">
+        <span>🦁 LION ROOTS</span>
+        <span>🌐 FB</span>
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=61579196451031" target="_blank" class="btn-artist">
+        <span>🔥 TSIARO</span>
+        <span>🌐 FB</span>
+      </a>
+
+      <a href="https://www.facebook.com/jese.mampiandrarivelo" target="_blank" class="btn-artist">
+        <span>🎵 JESSE MJS</span>
+        <span>🌐 FB</span>
+      </a>
+
+      <a href="https://www.facebook.com/brayanne.mj" target="_blank" class="btn-artist">
+        <span>🎧 BRUNEL BK</span>
+        <span>🌐 FB</span>
+      </a>
     </div>
 
     <!-- ================= PAGE 3: PAYMENT MVOLA & CODE REF ================= -->
@@ -626,6 +682,8 @@
         showPage('2a');
       } else if (cat === 'graphic') {
         showPage('2b');
+      } else if (cat === 'artists') {
+        showPage('2c');
       }
     }
 
@@ -704,7 +762,7 @@
     }
 
     function showPage(pageId) {
-      const pages = ['1', 'follow', 'categories', '2a', '2b', '3', '4'];
+      const pages = ['1', 'follow', 'categories', '2a', '2b', '2c', '3', '4'];
       pages.forEach(p => {
         const el = document.getElementById('page-' + p);
         if (el) el.style.display = "none";
