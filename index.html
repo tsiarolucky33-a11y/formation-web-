@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formation Pro & Services</title>
 
-  <!-- Lien ho an'ny Manifest PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#1e1b4b">
 
@@ -106,7 +105,30 @@
       background-color: rgba(15, 23, 42, 0.9);
     }
 
-    /* SELECTION FORMATION */
+    /* SELECTION CATEGORIE / FORMATION */
+    .btn-cat {
+      width: 100%;
+      padding: 16px;
+      background: rgba(30, 41, 59, 0.7);
+      border: 1.5px solid #3b82f6;
+      color: #f8fafc;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cat:hover {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: #60a5fa;
+      transform: translateY(-2px);
+    }
+
     .prices-box {
       display: flex;
       flex-direction: column;
@@ -244,7 +266,20 @@
       box-shadow: 0 4px 12px rgba(24, 119, 242, 0.35);
     }
 
-    /* BOUTON TÉLÉCHARGER L'APPLICATION (NORMAL AO AMBANY) */
+    .btn-back {
+      background: none;
+      color: #94a3b8;
+      border: none;
+      font-size: 13px;
+      cursor: pointer;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .btn-back:hover {
+      color: #f8fafc;
+    }
+
     .btn-download-app {
       display: block;
       width: 100%;
@@ -392,36 +427,35 @@
       </button>
     </div>
 
-    <!-- ================= PAGE 2: MISAFIDY FORMATION ================= -->
-    <div id="page-2" class="page" style="display: none;">
-      <h2>Misafidy Formation</h2>
-      <p class="subtitle">Fidio ny formation tianao atao dia kitiho ny Confirmer</p>
+    <!-- ================= PAGE CATEGORIES: SAFIDY SOKAJY ================= -->
+    <div id="page-categories" class="page" style="display: none;">
+      <h2>Misafidy Sokajy</h2>
+      <p class="subtitle">Kitiho ny sokajy tianao idirana</p>
       
-      <form id="form-page-2">
+      <button class="btn-cat" onclick="openCategory('formations')">
+        <span>📚 FORMATIONS</span>
+        <span>➔</span>
+      </button>
+
+      <button class="btn-cat" style="border-color: #f97316;" onclick="openCategory('graphic')">
+        <span>🎨 DESSIN PRO ET GRAPHIC</span>
+        <span>➔</span>
+      </button>
+    </div>
+
+    <!-- ================= PAGE 2A: FORMATIONS ================= -->
+    <div id="page-2a" class="page" style="display: none;">
+      <button class="btn-back" onclick="showPage('categories')">← Hiverina amin'ny Sokajy</button>
+      <h2>Formations</h2>
+      <p class="subtitle">Fidio ny formation tianao atao</p>
+      
+      <form id="form-page-2a">
         <div class="prices-box">
-
-          <!-- OPTION SARY GEMINI -->
-          <label class="price-option">
-            <input type="radio" name="formation" value="Sary Gemini" data-price="1 000 Ar" onchange="checkGeminiFormation(this)">
-            <div class="price-label">
-              <span class="price-name">Sary Gemini</span>
-              <span class="price-val">1 000 Ar</span>
-            </div>
-          </label>
-
           <label class="price-option">
             <input type="radio" name="formation" value="Asa en ligne" data-price="2 000 Ar" checked>
             <div class="price-label">
               <span class="price-name">Formation Asa en ligne</span>
               <span class="price-val">2 000 Ar</span>
-            </div>
-          </label>
-
-          <label class="price-option">
-            <input type="radio" name="formation" value="Montage Vidéo et Lyrics" data-price="5 000 Ar" onchange="checkSpecialFormation(this)">
-            <div class="price-label">
-              <span class="price-name">Montage Vidéo et Lyrics</span>
-              <span class="price-val">5 000 Ar</span>
             </div>
           </label>
 
@@ -448,7 +482,35 @@
               <span class="price-val">4 000 Ar</span>
             </div>
           </label>
+        </div>
 
+        <button type="submit" class="btn">Confirmer ny safidy</button>
+      </form>
+    </div>
+
+    <!-- ================= PAGE 2B: DESSIN PRO ET GRAPHIC ================= -->
+    <div id="page-2b" class="page" style="display: none;">
+      <button class="btn-back" onclick="showPage('categories')">← Hiverina amin'ny Sokajy</button>
+      <h2>Dessin Pro & Graphic</h2>
+      <p class="subtitle">Fidio ny tolotra tianao</p>
+      
+      <form id="form-page-2b">
+        <div class="prices-box">
+          <label class="price-option">
+            <input type="radio" name="formation" value="Sary Gemini" data-price="1 000 Ar" checked onchange="checkGeminiFormation(this)">
+            <div class="price-label">
+              <span class="price-name">Sary Gemini</span>
+              <span class="price-val">1 000 Ar</span>
+            </div>
+          </label>
+
+          <label class="price-option">
+            <input type="radio" name="formation" value="Montage Vidéo et Lyrics" data-price="5 000 Ar" onchange="checkSpecialFormation(this)">
+            <div class="price-label">
+              <span class="price-name">Montage Vidéo et Lyrics</span>
+              <span class="price-val">5 000 Ar</span>
+            </div>
+          </label>
         </div>
 
         <button type="submit" class="btn">Confirmer ny safidy</button>
@@ -498,7 +560,7 @@
       <button class="btn-logout" onclick="logout()">Se déconnecter</button>
     </div>
 
-    <!-- BOUTON TÉLÉCHARGER L'APPLICATION (TSOTRA AO AMBANY INDRINDRA) -->
+    <!-- BOUTON TÉLÉCHARGER L'APPLICATION -->
     <a href="app.apk" download="Formation-App.apk" class="btn-download-app">
       📲 TÉLÉCHARGER L'APPLICATION (.APK)
     </a>
@@ -542,7 +604,6 @@
           return;
         }
         currentUserData = { email: email, password: password };
-        
         showPage('follow');
 
       } else {
@@ -557,10 +618,18 @@
 
     function handleFollowFacebook() {
       window.open("https://www.facebook.com/profile.php?id=61579196451031", "_blank");
-      showPage('2');
+      showPage('categories');
     }
 
-    /* HANOKAFANA FACEBOOK PROFIL REHEFA KITIHINA NY SARY GEMINI */
+    function openCategory(cat) {
+      if (cat === 'formations') {
+        showPage('2a');
+      } else if (cat === 'graphic') {
+        showPage('2b');
+      }
+    }
+
+    /* FACEBOOK LINKS FOR SPECIFIC OPTIONS */
     function checkGeminiFormation(element) {
       if (element.checked) {
         window.open("https://www.facebook.com/profile.php?id=61579196451031", "_blank");
@@ -573,18 +642,30 @@
       }
     }
 
-    document.getElementById('form-page-2').addEventListener('submit', function(e) {
+    /* CONFIRM FORMATIONS (2A) */
+    document.getElementById('form-page-2a').addEventListener('submit', function(e) {
       e.preventDefault();
-      const selectedRadio = document.querySelector('input[name="formation"]:checked');
-      
+      const selectedRadio = document.querySelector('#form-page-2a input[name="formation"]:checked');
+      submitChoice(selectedRadio);
+    });
+
+    /* CONFIRM DESSIN PRO & GRAPHIC (2B) */
+    document.getElementById('form-page-2b').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const selectedRadio = document.querySelector('#form-page-2b input[name="formation"]:checked');
+      submitChoice(selectedRadio);
+    });
+
+    function submitChoice(selectedRadio) {
+      if (!selectedRadio) return;
       selectedFormationData.name = selectedRadio.value;
       selectedFormationData.price = selectedRadio.getAttribute('data-price');
 
       document.getElementById('display-price').innerText = "Sarany: " + selectedFormationData.price;
-      
       showPage('3');
-    });
+    }
 
+    /* CONFIRM PAYMENT (3) */
     document.getElementById('form-page-3').addEventListener('submit', function(e) {
       e.preventDefault();
       const refCode = document.getElementById('ref_code').value.trim();
@@ -623,13 +704,14 @@
     }
 
     function showPage(pageId) {
-      document.getElementById('page-1').style.display = "none";
-      document.getElementById('page-follow').style.display = "none";
-      document.getElementById('page-2').style.display = "none";
-      document.getElementById('page-3').style.display = "none";
-      document.getElementById('page-4').style.display = "none";
+      const pages = ['1', 'follow', 'categories', '2a', '2b', '3', '4'];
+      pages.forEach(p => {
+        const el = document.getElementById('page-' + p);
+        if (el) el.style.display = "none";
+      });
 
-      document.getElementById('page-' + pageId).style.display = "block";
+      const targetPage = document.getElementById('page-' + pageId);
+      if (targetPage) targetPage.style.display = "block";
     }
 
     function logout() {
