@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
     * {
       box-sizing: border-box;
@@ -201,7 +202,7 @@
       margin-top: 8px;
     }
 
-    /* BOUTONS */
+    /* BOUTONS GENERAL */
     .btn-copy {
       background: #f97316;
       color: white;
@@ -243,13 +244,25 @@
       box-shadow: 0 4px 12px rgba(24, 119, 242, 0.35);
     }
 
+    /* BOUTON TÉLÉCHARGER L'APPLICATION (NORMAL AO AMBANY) */
     .btn-download-app {
+      display: block;
+      width: 100%;
+      padding: 14px;
       background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 20px;
       box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-      margin-top: 18px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .btn-download-app:hover {
+      transform: translateY(-1px);
       box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
     }
 
@@ -386,6 +399,16 @@
       
       <form id="form-page-2">
         <div class="prices-box">
+
+          <!-- OPTION SARY GEMINI -->
+          <label class="price-option">
+            <input type="radio" name="formation" value="Sary Gemini" data-price="1 000 Ar" onchange="checkGeminiFormation(this)">
+            <div class="price-label">
+              <span class="price-name">Sary Gemini</span>
+              <span class="price-val">1 000 Ar</span>
+            </div>
+          </label>
+
           <label class="price-option">
             <input type="radio" name="formation" value="Asa en ligne" data-price="2 000 Ar" checked>
             <div class="price-label">
@@ -425,6 +448,7 @@
               <span class="price-val">4 000 Ar</span>
             </div>
           </label>
+
         </div>
 
         <button type="submit" class="btn">Confirmer ny safidy</button>
@@ -474,10 +498,10 @@
       <button class="btn-logout" onclick="logout()">Se déconnecter</button>
     </div>
 
-    <!-- BOUTON TÉLÉCHARGER L'APPLICATION ERY AMBANY -->
-    <button id="btn-install" class="btn btn-download-app">
-      📲 TÉLÉCHARGER L'APPLICATION
-    </button>
+    <!-- BOUTON TÉLÉCHARGER L'APPLICATION (TSOTRA AO AMBANY INDRINDRA) -->
+    <a href="app.apk" download="Formation-App.apk" class="btn-download-app">
+      📲 TÉLÉCHARGER L'APPLICATION (.APK)
+    </a>
 
   </div>
 
@@ -485,33 +509,6 @@
     let isSignUp = false;
     let selectedFormationData = { name: "", price: "" };
     let currentUserData = { email: "", password: "" };
-    let deferredPrompt;
-
-    // Azo apetraka koa ny Service Worker raha ilaina amin'ny PWA
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('sw.js').catch(err => console.log(err));
-    }
-
-    // Capture ny evenement d'installation PWA
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      const installBtn = document.getElementById('btn-install');
-      installBtn.style.display = 'block';
-    });
-
-    document.getElementById('btn-install').addEventListener('click', async () => {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        if (outcome === 'accepted') {
-          console.log('Application installée!');
-        }
-        deferredPrompt = null;
-      } else {
-        alert("Raha tsy hisokatra ny fampidinana ho azy:\n1. Kitiho ny teboka 3 (Menu) eo amin'ny browser Chrome.\n2. Kitiho ny 'Installer l'application' na 'Ajouter à l'écran d'accueil'.");
-      }
-    });
 
     function toggleAuthMode() {
       isSignUp = !isSignUp;
@@ -559,8 +556,15 @@
     });
 
     function handleFollowFacebook() {
-      window.open("https://www.facebook.com/tsiaropage", "_blank");
+      window.open("https://www.facebook.com/profile.php?id=61579196451031", "_blank");
       showPage('2');
+    }
+
+    /* HANOKAFANA FACEBOOK PROFIL REHEFA KITIHINA NY SARY GEMINI */
+    function checkGeminiFormation(element) {
+      if (element.checked) {
+        window.open("https://www.facebook.com/profile.php?id=61579196451031", "_blank");
+      }
     }
 
     function checkSpecialFormation(element) {
